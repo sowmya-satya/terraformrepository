@@ -16,7 +16,7 @@ node {
 	   }
 	   
 	   stage('Downstream Build -- Ansible Deployment'){
-		 	build 'pipe-Ansible'
+		 	build 'ansible-pipeline'
 		}
   
    
