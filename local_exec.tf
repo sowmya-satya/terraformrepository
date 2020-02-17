@@ -42,7 +42,7 @@ provisioner "local-exec" {
         echo "[web]"| tee -a inventory;
         export ANSIBLE_HOST_KEY_CHECKING=False;
         echo "${aws_instance.backend.public_ip}" | tee -a inventory;
-        ansible-playbook --key /root/.ssh/ramya.pem -i /root/terraformrepository/inventory ./web-playbook.yaml -u ubuntu -v 
+        ansible-playbook --key /root/.ssh/ramya.pem -i inventory ./web-playbook.yaml -u ubuntu -v 
     EOT
 }
 }
