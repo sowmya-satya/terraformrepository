@@ -1,0 +1,8 @@
+---
+- name: Excuting Web-Role Operations
+  hosts: 'web'
+  become: yes
+  become_method: sudo
+  
+  roles:
+  - web

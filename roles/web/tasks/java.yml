@@ -1,0 +1,3 @@
+---
+- name: Install Java 1.8
+  apt: name=default-jdk state=present
