@@ -15,9 +15,28 @@ node {
 	   sh label: 'terraform', script: '/bin/terraform  apply -input=false -auto-approve'
 	   }
 	   
-	   stage('Downstream Build -- Ansible Deployment'){
-		 	build 'ansible-pipe'
-		}
+	  // stage('Downstream Build -- Ansible Deployment'){
+		 //	build 'ansible-pipe'
+		//}
+		
+		stage('Download package from JFrog') {
+            def server= Artifactory.server 'Artifactory'
+            def downloadSpec = """{
+            "files": [
+            {
+                "pattern": "capstoneproject/capstoneproject-0.0.1-SNAPSHOT.war",
+                "target": "./capstoneproject.war"
+            }
+            ]
+            }"""
+        server.download(downloadSpec)
+    }
+    
+    stage('Deployment into production'){
+ 	 sh label: 'terraform', script: 'ansible-playbook -i /root/.jenkins/workspace/terraform-pipeline/inventory -u ubuntu --key /root/.ssh/ramya.pem ./web-playbook.yaml'
+     }
+	
+		
   
    
 //}	-----------dir end---------  
