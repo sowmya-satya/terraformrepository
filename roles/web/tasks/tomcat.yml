@@ -10,6 +10,6 @@
     command: rm -rf /opt/SP/apps/tomcat/webapps/ROOT
     
   - name: Copy DevOps Project War Files
-    copy: src=../../../capstoneproject.war dest=/opt/SP/apps/tomcat/webapps/ROOT.war mode=0644
+    copy: src=capstoneproject.war dest=/opt/SP/apps/tomcat/webapps/ROOT.war mode=0644
     notify: 
     - Restart Tomcat
