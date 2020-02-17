@@ -34,10 +34,10 @@ node {
 		 //	build 'ansible-pipe'
 		//}
 		
-	    /*stage('Deployment into production'){
+	    stage('Deployment into production'){
  	 sh label: 'terraform', script: 'ansible-playbook -i /root/.jenkins/workspace/terraform-pipeline/inventory -u ubuntu --key /root/.ssh/ramya.pem ./web-playbook.yaml'
      }
-	*/
+	
 		
   
    
